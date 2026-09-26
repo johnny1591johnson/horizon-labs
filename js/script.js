@@ -113,32 +113,31 @@ p { margin-bottom: 1rem; color: var(--color-text-light); }
 .fade-in { opacity: 0; transform: translateY(15px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-const cloudLayers = document.querySelectorAll('.cloud-layer');
+ const cloudLayers = document.querySelectorAll('.cloud-layer');
   if (cloudLayers.length > 0) {
     let ticking = false;
 
     const updateClouds = () => {
       const scrollY = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+      const progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollY / maxScroll)) : 0;
 
       cloudLayers.forEach((layer, i) => {
-        // Each layer activates at a different scroll depth for staggered opacity
-        const layerStart = i * 0.2;
-        const layerEnd = layerStart + 0.6;
-        const layerProgress = Math.min(1, Math.max(0, (progress - layerStart) / (layerEnd - layerStart)));
+        // Each cloud peaks at a different scroll depth (0.12, 0.30, 0.48, 0.66, 0.84)
+        const center = 0.12 + (i * 0.18);
+        const spread = 0.28; // How wide the visibility window is
 
-        // Smooth opacity curve: fade in → peak → fade out
-        const opacityCurve = layerProgress < 0.5 
-          ? 2 * layerProgress 
-          : 2 * (1 - layerProgress);
-        layer.style.opacity = Math.min(0.8, Math.max(0.1, 0.15 + (0.65 * opacityCurve)));
+        // Bell-curve visibility: fade in → peak → fade out
+        const dist = Math.abs(progress - center);
+        const visibility = Math.max(0, 1 - (dist / (spread / 2)));
+        const opacity = visibility * 0.9; // Max 90% opacity for clear visibility
 
-        // Physical depth: vertical parallax + subtle horizontal drift + scale
-        const speedY = 0.06 + (i * 0.03);
-        const driftX = Math.sin(progress * Math.PI * 2 + i) * 12; // Gentle horizontal sway
-        const scale = 1 + (layerProgress * 0.06);
+        // Falling parallax: deeper layers fall faster
+        const speedY = 0.10 + (i * 0.05);
+        const driftX = Math.sin(progress * Math.PI * 2.5 + i * 1.2) * 18; // Gentle horizontal sway
+        const scale = 0.95 + (i * 0.09); // Closer layers appear larger
 
+        layer.style.opacity = opacity;
         layer.style.transform = `translateY(${scrollY * speedY}px) translateX(${driftX}px) scale(${scale})`;
       });
       ticking = false;
