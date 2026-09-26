@@ -1,0 +1,74 @@
+cat > horizon-labs/blog.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Strategic insights on the 10 future-shaping technologies, market shifts, and tactical takeaways.">
+  <title>Blog | Horizon Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon/favicon.ico">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="Horizon Labs Home">Horizon Labs</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Toggle navigation">☰</button>
+      <ul id="main-menu" class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html" aria-current="page">Blog</a></li>
+        <li><a href="contact.html" class="btn btn-sm">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>AI Horizon Brief</h1>
+      <p>Monthly strategic insights on the 10 technologies reshaping humanity. No fluff. Just execution-ready intelligence.</p>
+
+      <div class="grid-3" style="margin-top:2rem;">
+        <article class="card fade-in" id="case1">
+          <div class="card-meta">Published: Oct 12, 2024 • 6 min read</div>
+          <h3>The Autonomous Agent Transition: From Tools to Colleagues</h3>
+          <p>How enterprises are shifting from single-purpose AI to multi-agent orchestration. Includes workflow mapping template.</p>
+          <span class="tag">Autonomous AI Agents</span><span class="tag">Enterprise</span>
+          <a href="#" style="display:block; margin-top:0.75rem; font-weight:600;">Read Full Article →</a>
+        </article>
+
+        <article class="card fade-in" id="case2">
+          <div class="card-meta">Published: Sep 28, 2024 • 8 min read</div>
+          <h3>Responsible Deployment: AI Military Systems & Policy Alignment</h3>
+          <p>Navigating compliance, ethical boundaries, and strategic risk without sacrificing operational advantage.</p>
+          <span class="tag">AI Military Systems</span><span class="tag">Governance</span>
+          <a href="#" style="display:block; margin-top:0.75rem; font-weight:600;">Read Full Article →</a>
+        </article>
+
+        <article class="card fade-in" id="case3">
+          <div class="card-meta">Published: Sep 15, 2024 • 5 min read</div>
+          <h3>AGI Trajectory: What C-Suite Leaders Must Track in 2025</h3>
+          <p>Beyond hype: measurable indicators, org design shifts, and capital allocation strategies for the next decade.</p>
+          <span class="tag">AGI</span><span class="tag">Strategy</span>
+          <a href="#" style="display:block; margin-top:0.75rem; font-weight:600;">Read Full Article →</a>
+        </article>
+      </div>
+
+      <div class="text-center" style="margin-top:3rem;">
+        <a href="contact.html" class="btn btn-primary">Subscribe to the AI Horizon Brief</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">&copy; <span id="year"></span> Horizon Labs. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/script.js" defer></script>
+</body>
+</html>
+EOF
