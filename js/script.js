@@ -113,50 +113,43 @@ p { margin-bottom: 1rem; color: var(--color-text-light); }
 .fade-in { opacity: 0; transform: translateY(15px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ─────────────────────────────────────────────────────────────
-   Dark Grey Foggy Morning Background (Global)
-   ───────────────────────────────────────────────────────────── */
-.cloud-fog-container {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #181c22 0%, #22272e 40%, #2d333b 100%);
-}
+const cloudLayers = document.querySelectorAll('.cloud-layer');
+  if (cloudLayers.length > 0) {
+    let ticking = false;
 
-.cloud-layer {
-  position: absolute;
-  width: 160%;
-  height: 160%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(80, 95, 115, 0.35) 0%, transparent 70%);
-  filter: blur(70px);
-  opacity: 0.65;
-  will-change: transform;
-  transform-origin: center;
-}
+    const updateClouds = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
 
-.layer-1 { top: -15%; left: -30%; }
-.layer-2 { top: 20%; left: 20%; filter: blur(85px); opacity: 0.5; }
-.layer-3 { top: 50%; left: -15%; filter: blur(100px); opacity: 0.4; }
+      cloudLayers.forEach((layer, i) => {
+        // Each layer activates at a different scroll depth for staggered opacity
+        const layerStart = i * 0.2;
+        const layerEnd = layerStart + 0.6;
+        const layerProgress = Math.min(1, Math.max(0, (progress - layerStart) / (layerEnd - layerStart)));
 
-.cloud-fog-container::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(20, 23, 28, 0.2) 0%, rgba(45, 51, 59, 0.4) 100%);
-  pointer-events: none;
-}
+        // Smooth opacity curve: fade in → peak → fade out
+        const opacityCurve = layerProgress < 0.5 
+          ? 2 * layerProgress 
+          : 2 * (1 - layerProgress);
+        layer.style.opacity = Math.min(0.8, Math.max(0.1, 0.15 + (0.65 * opacityCurve)));
 
-@media (max-width: 768px) {
-  .nav-list { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #1a1e25; padding: 1rem; border-bottom: 1px solid var(--color-border); box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-  .nav-list.active { display: flex; }
-  .nav-toggle { display: block; }
-  .process-flow { flex-direction: column; align-items: center; }
-  .arrow { transform: rotate(90deg); margin: 0.5rem 0; }
-  .hero { padding: 3rem 0; }
-  /* Performance: Disable heavy fog on mobile */
-  .cloud-fog-container { display: none; }
-}
-EOF
+        // Physical depth: vertical parallax + subtle horizontal drift + scale
+        const speedY = 0.06 + (i * 0.03);
+        const driftX = Math.sin(progress * Math.PI * 2 + i) * 12; // Gentle horizontal sway
+        const scale = 1 + (layerProgress * 0.06);
+
+        layer.style.transform = `translateY(${scrollY * speedY}px) translateX(${driftX}px) scale(${scale})`;
+      });
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateClouds);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateClouds(); // Initial render
+  }
