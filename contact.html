@@ -1,0 +1,83 @@
+cat > horizon-labs/contact.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch for AI strategy consulting, media production, or sales enablement.">
+  <title>Contact | Horizon Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon/favicon.ico">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="Horizon Labs Home">Horizon Labs</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Toggle navigation">☰</button>
+      <ul id="main-menu" class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Get In Touch</h1>
+      <p>Ready to translate frontier research into market advantage? Book a strategy session or send us your requirements.</p>
+
+      <div class="grid-2" style="margin-top:2rem;">
+        <div class="card fade-in">
+          <h3>📧 Email</h3>
+          <p>hello@horizonlabs.ai</p>
+          <h3>📅 Book a Call</h3>
+          <p><a href="https://calendly.com/your-link" target="_blank" rel="noopener">Schedule a 30-Min Strategy Session</a></p>
+          <h3>📍 Location</h3>
+          <p>Remote-first. Serving clients across North America, EMEA, and APAC.</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Send a Message</h3>
+          <!-- Replace action with Formspree/Netlify endpoint -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Work Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+              <label for="message">How can we help? *</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your project, timeline, and success metrics."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top:3rem;">
+        <p style="font-size:0.9rem;">We typically respond within 24 hours. All inquiries are treated with strict confidentiality.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">&copy; <span id="year"></span> Horizon Labs. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/script.js" defer></script>
+</body>
+</html>
+EOF
