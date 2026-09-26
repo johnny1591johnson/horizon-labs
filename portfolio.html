@@ -1,0 +1,74 @@
+cat > horizon-labs/portfolio.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case studies: AI strategy, media campaigns, and sales transformations for forward-thinking organizations.">
+  <title>Portfolio | Horizon Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon/favicon.ico">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="Horizon Labs Home">Horizon Labs</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Toggle navigation">☰</button>
+      <ul id="main-menu" class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="btn btn-sm">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Selected Work</h1>
+      <p>Real outcomes from the intersection of research, media, and market strategy.</p>
+
+      <div class="grid-3" style="margin-top:2rem;">
+        <article class="card fade-in">
+          <div class="card-meta">Healthcare • AI Medicine • 2024</div>
+          <h3>NeuroScan Diagnostics</h3>
+          <p>Reduced time-to-market for AI diagnostic tool from 18mo → 6mo. Built executive narrative, sales playbook, and regulatory alignment strategy.</p>
+          <span class="tag">AI Medicine</span><span class="tag">GTM Strategy</span>
+          <a href="blog.html#case1" style="display:block; margin-top:0.75rem; font-weight:600;">Read Case Study →</a>
+        </article>
+
+        <article class="card fade-in">
+          <div class="card-meta">Defense Tech • Autonomous Agents • 2023</div>
+          <h3>Project Aegis Integration</h3>
+          <p>Designed policy-compliant deployment framework for autonomous logistics agents. Reduced operational risk by 42% while maintaining mission agility.</p>
+          <span class="tag">Autonomous AI Agents</span><span class="tag">Risk Management</span>
+          <a href="blog.html#case2" style="display:block; margin-top:0.75rem; font-weight:600;">Read Case Study →</a>
+        </article>
+
+        <article class="card fade-in">
+          <div class="card-meta">Enterprise • Human-AI Collaboration • 2024</div>
+          <h3>Global Logistics Corp</h3>
+          <p>Replaced 60% of manual routing with AI agents. Trained 2,400 staff on augmentation workflows. ROI realized in 9 months.</p>
+          <span class="tag">Human-AI Collaboration</span><span class="tag">Org Transformation</span>
+          <a href="blog.html#case3" style="display:block; margin-top:0.75rem; font-weight:600;">Read Case Study →</a>
+        </article>
+      </div>
+
+      <div class="text-center" style="margin-top:3rem;">
+        <a href="contact.html" class="btn btn-primary">Request Full Portfolio PDF</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">&copy; <span id="year"></span> Horizon Labs. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/script.js" defer></script>
+</body>
+</html>
+EOF
