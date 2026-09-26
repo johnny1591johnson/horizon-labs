@@ -1,0 +1,66 @@
+cat > horizon-labs/about.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Horizon Labs: a research-driven strategy firm bridging frontier AI with market execution.">
+  <title>About | Horizon Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon/favicon.ico">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="Horizon Labs Home">Horizon Labs</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Toggle navigation">☰</button>
+      <ul id="main-menu" class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="btn btn-sm">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>About Horizon Labs</h1>
+      <p>We exist at the intersection of <strong>Research, Media, Marketing, Sales, Technology, and AI</strong>. While others chase trends, we build the translation layer between academic breakthroughs and boardroom execution.</p>
+      
+      <div class="grid-2" style="margin:2rem 0;">
+        <div class="card fade-in">
+          <h3>Our Mission</h3>
+          <p>Accelerate responsible adoption of the 10 technologies shaping humanity over the next 50 years. We help organizations move from curiosity to commercialization without compromising ethics or compliance.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Our Method</h3>
+          <p>Deep technical research → Compelling media storytelling → Targeted marketing → Conversion-focused sales enablement → Tech stack integration → Continuous AI optimization.</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top:2rem;">Leadership & Advisory</h2>
+      <div class="grid-3">
+        <div class="card fade-in"><h3>Dr. Elena Rostova</h3><p class="card-meta">Chief Research Officer</p><p>Former MIT AI Lab. Specializes in AGI trajectory mapping and ethical governance frameworks.</p></div>
+        <div class="card fade-in"><h3>Marcus Chen</h3><p class="card-meta">Head of GTM Strategy</p><p>Ex-Stripe & Palantir. Built go-to-market systems for 14 enterprise AI products.</p></div>
+        <div class="card fade-in"><h3>Amara Okafor</h3><p class="card-meta">Media & Narrative Lead</p><p>Former NYT Tech Editor. Translates complex research into executive-ready narratives.</p></div>
+      </div>
+
+      <div class="text-center" style="margin-top:3rem;">
+        <a href="contact.html" class="btn btn-primary">Book a Strategy Session</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">&copy; <span id="year"></span> Horizon Labs. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/script.js" defer></script>
+</body>
+</html>
+EOF
