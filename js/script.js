@@ -1,154 +1,34 @@
-cat > horizon-labs/css/style.css << 'EOF'
-:root {
-  --color-primary: #e2e8f0;
-  --color-accent: #60a5fa;
-  --color-accent-hover: #93bbfd;
-  --color-text: #cbd5e1;
-  --color-text-light: #94a3b8;
-  --color-bg: #14171c;
-  --color-bg-light: #1a1e25;
-  --color-bg-dark: #0f1216;
-  --color-border: #2a2f38;
-  --color-success: #4ade80;
-  --color-error: #f87171;
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --max-width: 1100px;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
-  --shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.3);
-  --transition: all 0.2s ease;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body { 
-  font-family: var(--font-sans); 
-  color: var(--color-text); 
-  line-height: 1.6; 
-  background: var(--color-bg);
-  min-height: 100vh;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: var(--color-accent); text-decoration: none; transition: var(--transition); }
-a:hover { color: var(--color-accent-hover); }
-ul { list-style: none; }
-h1, h2, h3, h4 { line-height: 1.2; color: var(--color-primary); margin-bottom: 0.75rem; }
-h1 { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800; }
-h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; }
-h3 { font-size: 1.25rem; font-weight: 600; }
-p { margin-bottom: 1rem; color: var(--color-text-light); }
-
-.skip-link { position: absolute; top: -40px; left: 0; background: var(--color-accent); color: #0f172a; padding: 0.5rem 1rem; z-index: 100; transition: top 0.2s; font-weight: 600; }
-.skip-link:focus { top: 0; }
-:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
-
-.container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
-.section { padding: 4rem 0; }
-.bg-light { background: var(--color-bg-light); }
-.bg-dark { background: var(--color-bg-dark); color: var(--color-primary); }
-.text-center { text-align: center; }
-
-.site-header { 
-  background: rgba(20, 23, 28, 0.85); 
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border); 
-  position: sticky; 
-  top: 0; 
-  z-index: 50; 
-}
-.nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; max-width: var(--max-width); margin: 0 auto; }
-.logo { font-weight: 800; font-size: 1.25rem; color: var(--color-primary); letter-spacing: -0.5px; }
-.nav-list { display: flex; gap: 1.5rem; align-items: center; }
-.nav-list a { color: var(--color-text); font-weight: 500; }
-.nav-list a:hover { color: var(--color-accent); }
-.nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0.25rem; color: var(--color-primary); }
-
-.btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer; border: none; transition: var(--transition); text-align: center; }
-.btn-primary { background: var(--color-accent); color: #0f172a; }
-.btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(96,165,250,0.3); }
-.btn-outline { background: transparent; border: 2px solid var(--color-accent); color: var(--color-accent); }
-.btn-outline:hover { background: var(--color-accent); color: #0f172a; }
-.btn-sm { padding: 0.5rem 1rem; font-size: 0.9rem; }
-
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.card { 
-  background: #1a1e25; 
-  padding: 1.5rem; 
-  border-radius: var(--radius-lg); 
-  box-shadow: var(--shadow); 
-  border: 1px solid var(--color-border); 
-  transition: var(--transition); 
-}
-.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
-.card h3 { margin-bottom: 0.5rem; }
-.card p { font-size: 0.95rem; margin-bottom: 1rem; }
-.card-meta { font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 0.75rem; }
-.tag { display: inline-block; background: #1e293b; color: #60a5fa; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-right: 0.5rem; margin-bottom: 0.5rem; }
-
-.process-flow { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
-.step { background: var(--color-primary); color: #0f172a; padding: 0.75rem 1.25rem; border-radius: 20px; font-weight: 600; }
-.arrow { font-size: 1.5rem; color: var(--color-text-light); }
-
-.form-group { margin-bottom: 1rem; }
-.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-primary); }
-.form-group input, .form-group textarea, .form-group select { 
-  width: 100%; padding: 0.75rem; 
-  background: #0f1216; 
-  color: var(--color-text);
-  border: 1px solid var(--color-border); 
-  border-radius: var(--radius); 
-  font-family: inherit; font-size: 1rem; 
-}
-.form-group textarea { resize: vertical; min-height: 120px; }
-.newsletter-form { display: flex; gap: 0.5rem; max-width: 500px; margin: 1.5rem auto 0; flex-wrap: wrap; justify-content: center; }
-.newsletter-form input { flex: 1; min-width: 200px; background: #0f1216; color: var(--color-text); }
-
-.site-footer { background: #0a0c0e; color: #64748b; padding: 3rem 0 1.5rem; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-.footer-links li { margin-bottom: 0.5rem; }
-.copyright { text-align: center; font-size: 0.875rem; border-top: 1px solid #1e293b; padding-top: 1.5rem; }
-
-.fade-in { opacity: 0; transform: translateY(15px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
- const cloudLayers = document.querySelectorAll('.cloud-layer');
-  if (cloudLayers.length > 0) {
-    let ticking = false;
-
-    const updateClouds = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollY / maxScroll)) : 0;
-
-      cloudLayers.forEach((layer, i) => {
-        // Each cloud peaks at a different scroll depth (0.12, 0.30, 0.48, 0.66, 0.84)
-        const center = 0.12 + (i * 0.18);
-        const spread = 0.28; // How wide the visibility window is
-
-        // Bell-curve visibility: fade in → peak → fade out
-        const dist = Math.abs(progress - center);
-        const visibility = Math.max(0, 1 - (dist / (spread / 2)));
-        const opacity = visibility * 0.9; // Max 90% opacity for clear visibility
-
-        // Falling parallax: deeper layers fall faster
-        const speedY = 0.10 + (i * 0.05);
-        const driftX = Math.sin(progress * Math.PI * 2.5 + i * 1.2) * 18; // Gentle horizontal sway
-        const scale = 0.95 + (i * 0.09); // Closer layers appear larger
-
-        layer.style.opacity = opacity;
-        layer.style.transform = `translateY(${scrollY * speedY}px) translateX(${driftX}px) scale(${scale})`;
-      });
-      ticking = false;
-    };
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateClouds);
-        ticking = true;
-      }
-    }, { passive: true });
-
-    updateClouds(); // Initial render
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Navigation Toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navList = document.getElementById('main-menu');
+  if (navToggle && navList) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navList.classList.toggle('active');
+    });
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navList.classList.remove('active'));
+    });
   }
+
+  // Dynamic Copyright Year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Scroll-Triggered Fade-In Animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Forms: Formspree handles submission natively. 
+  // No JavaScript required. Configure success redirects in your Formspree dashboard.
+});
